@@ -544,16 +544,12 @@ class Tech extends Component {
   emulateTextTracks() {
     const tracks = this.textTracks();
 
-    if (!tracks) {
-      return;
-    }
-
     this.remoteTextTracks().on('addtrack', (e) => {
-      this.textTracks().addTrack(e.track);
+      tracks.addTrack(e.track);
     });
 
     this.remoteTextTracks().on('removetrack', (e) => {
-      this.textTracks().removeTrack(e.track);
+      tracks.removeTrack(e.track);
     });
 
     // Initially, Tech.el_ is a child of a dummy-div wait until the Component system
@@ -844,7 +840,7 @@ TRACK_TYPES.ALL.names.forEach(function(name) {
  *
  * @type {VideoTrackList}
  * @private
- * @property Tech#videotracks_
+ * @property Tech#videoTracks_
  */
 
 /**
